@@ -26,18 +26,16 @@ jobs:
         yarn build
       if: github.event.action == 'published'
 
-    - name: Package
+    - name: Packaging
       run: |
-        NAME=${TAG_NAME} yarn zip
+        NAME="my-package-${TAG_NAME}" yarn zip
       env:
         TAG_NAME: ${{ github.event.release.tag_name }}
       if: github.event.action == 'published'
 
-    - uses: fnkr/github-action-ghr@v1
+    - name: Upload zip
+      uses: fnkr/github-action-ghr@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GHR_PATH: 'dist/'
-      if: github.event.action == 'published'
-
-    - run: ls -la
       if: github.event.action == 'published'
