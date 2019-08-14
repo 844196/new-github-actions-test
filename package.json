@@ -6,9 +6,13 @@
   "author": "Masaya Takeda <844196@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "bestzip": "^2.1.4",
+    "shx": "^0.3.2",
     "typescript": "^3.5.3"
   },
   "scripts": {
-    "test": "tsc --noEmit --project ."
+    "build": "tsc",
+    "test": "tsc --noEmit",
+    "zip": "shx cp -R dist ${NAME} && bestzip ${NAME}.zip ${NAME}/* && shx rm -rf ${NAME}"
   }
 }
