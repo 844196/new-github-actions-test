@@ -1,6 +1,7 @@
 name: Release
 
-on: [release]
+on:
+  release:
 
 jobs:
   release:
@@ -9,6 +10,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@master
+
+    - run: exit
 
     - name: echo
       run: |
