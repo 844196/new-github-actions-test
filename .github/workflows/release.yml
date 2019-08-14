@@ -33,5 +33,13 @@ jobs:
         TAG_NAME: ${{ github.event.release.tag_name }}
       if: github.event.action == 'published'
 
+    - uses: JasonEtco/upload-to-release@master
+      with:
+        args: ${TAG_NAME}.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TAG_NAME: ${{ github.event.release.tag_name }}
+      if: github.event.action == 'published'
+
     - run: ls -la
       if: github.event.action == 'published'
