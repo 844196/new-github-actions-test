@@ -35,7 +35,7 @@ jobs:
 
     - uses: JasonEtco/upload-to-release@master
       with:
-        args: ${TAG_NAME}.zip
+        args: '*.zip'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         TAG_NAME: ${{ github.event.release.tag_name }}
