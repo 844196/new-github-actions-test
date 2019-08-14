@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -14,10 +13,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         version: 10.x
-
-    - name: Use Yarn latest
-      run: |
-        npm install -g yarn
 
     - name: Install dependencies
       run: |

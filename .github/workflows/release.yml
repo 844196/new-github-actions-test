@@ -10,9 +10,28 @@ jobs:
     - uses: actions/checkout@master
       if: github.event.action == 'published'
 
-    - name: echo
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@v1
+      with:
+        version: 10.x
+      if: github.event.action == 'published'
+
+    - name: Install dependencies
       run: |
-        echo ${TAG_NAME}
+        yarn install
+      if: github.event.action == 'published'
+
+    - name: Build
+      run: |
+        yarn build
+      if: github.event.action == 'published'
+
+    - name: package
+      run: |
+        NAME=${TAG_NAME} yarn zip
       env:
         TAG_NAME: ${{ github.event.release.tag_name }}
+      if: github.event.action == 'published'
+
+    - run: ls -la
       if: github.event.action == 'published'
