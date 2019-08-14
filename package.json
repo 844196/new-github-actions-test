@@ -1,6 +1,6 @@
 {
   "name": "new-github-actions-test",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "repository": "https://github.com/844196/new-github-actions-test.git",
   "author": "Masaya Takeda <844196@gmail.com>",
