@@ -26,14 +26,14 @@ jobs:
         yarn build
       if: github.event.action == 'published'
 
-    - name: package
+    - name: Package
       run: |
         NAME=${TAG_NAME} yarn zip
       env:
         TAG_NAME: ${{ github.event.release.tag_name }}
       if: github.event.action == 'published'
 
-    - uses: JasonEtco/upload-to-release@master
+    - uses: skx/github-action-publish-binaries@master
       with:
         args: '*.zip'
       env:
