@@ -8,11 +8,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@master
-      if: github.event.action == published
+      if: github.event.action == 'published'
 
     - name: echo
       run: |
         echo ${TAG_NAME}
       env:
         TAG_NAME: ${{ github.event.release.tag_name }}
-      if: github.event.action == published
+      if: github.event.action == 'published'
