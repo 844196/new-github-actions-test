@@ -13,6 +13,7 @@
   "scripts": {
     "build": "tsc",
     "test": "tsc --noEmit",
-    "zip": "shx cp -R dist ${NAME} && bestzip ${NAME}.zip ${NAME}/* && shx rm -rf ${NAME}"
+    "zip": "shx cp -R out ${NAME} && bestzip ${NAME}.zip ${NAME}/* && shx rm -rf ${NAME} && shx mkdir -p dist && shx mv ${NAME}.zip dist/${NAME}.zip",
+    "clean": "shx rm -rf out dist"
   }
 }
