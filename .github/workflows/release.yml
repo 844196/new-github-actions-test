@@ -1,50 +1,18 @@
 name: Release
 
-on:
-  push:
-    branches:
-      - '!*'
-    tags:
-      - v*
+on: [release]
 
 jobs:
   release:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@master
+      if: github.event.action == published
 
-    # - name: echo
-    #   run: |
-    #     echo ${TAG_NAME}
-
-    - name: Dump GitHub context
+    - name: echo
+      run: |
+        echo ${TAG_NAME}
       env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-
-    - name: Dump strategy context
-      env:
-        STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-      run: echo "$STRATEGY_CONTEXT"
-
-    - name: Dump matrix context
-      env:
-        MATRIX_CONTEXT: ${{ toJson(matrix) }}
-      run: echo "$MATRIX_CONTEXT"
-
-    - name: Dump job context
-      env:
-        JOB_CONTEXT: ${{ toJson(job) }}
-      run: echo "$JOB_CONTEXT"
-
-    - name: Dump runner context
-      env:
-        RUNNER_CONTEXT: ${{ toJson(runner) }}
-      run: echo "$RUNNER_CONTEXT"
-
-    - name: Dump steps context
-      env:
-        STEPS_CONTEXT: ${{ toJson(steps) }}
-      run: echo "$STEPS_CONTEXT"
+        TAG_NAME: ${{ github.event.release.tag_name }}
+      if: github.event.action == published
