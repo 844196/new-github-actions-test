@@ -1,9 +1,6 @@
 name: Release
 
-on:
-  push:
-    tags:
-      - v*
+on: release
 
 jobs:
   release:
@@ -15,4 +12,4 @@ jobs:
 
     - name: echo
       run: |
-        echo Hi!
+        echo ${GITHUB_REF}
