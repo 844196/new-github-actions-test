@@ -6,7 +6,7 @@
   "author": "Masaya Takeda <844196@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "bestzip": "^2.1.4",
+    "bestzip": "^2.1.7",
     "shx": "^0.3.2",
     "typescript": "^3.5.3"
   },
